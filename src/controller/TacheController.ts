@@ -42,8 +42,6 @@ export class TacheController {
                 id_user: user_id!
             });
 
-
-
             res.status(Statut.CREE).json(tache);
 
         } catch (error) {
@@ -56,8 +54,12 @@ export class TacheController {
         try {
 
             const id = Number(req.params.id);
+            const user_id = req.user?.id;
             const data = SchemaCreate.parse(req.body);
-            const tache = await tacheService.update(id, data);
+            const tache = await tacheService.update(id, {
+                ...data,
+                id_user: user_id!
+            });
 
             res.json(tache);
 

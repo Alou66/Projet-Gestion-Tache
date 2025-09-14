@@ -10,8 +10,8 @@ export declare class AuthService {
     connexion(login: string, password: string): Promise<{
         user: {
             id: number;
-            login: string;
             nom: string;
+            login: string;
             password: string;
         };
         token: string;

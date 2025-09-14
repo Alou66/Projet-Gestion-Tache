@@ -41,7 +41,7 @@ export class AuthService {
             const user = await this.login(login);
     
             if (!user) {
-                throw new Error("email n'existe pas ")
+                throw new Error("email incorrecte "); 
             }
             const passwordDecrypte = await bcryptjs.compare(password, user.password);
             if(!passwordDecrypte){

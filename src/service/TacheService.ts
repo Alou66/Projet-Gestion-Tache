@@ -22,7 +22,7 @@ export class TacheService implements IRepository<Taches> {
     async update(id:number,data:Partial<Taches>): Promise<Taches>{
         return await this.tacheRepos.update(id, data);
     }
-
+    
     async delete(id:number) :Promise<void>{
         await this.tacheRepos.delete(id);
     }

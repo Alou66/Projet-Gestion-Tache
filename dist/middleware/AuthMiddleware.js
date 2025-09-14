@@ -3,7 +3,7 @@ export class AuthMidlleware {
     static authentification(req, res, next) {
         const authHeader = req.headers["authorization"];
         if (!authHeader || !authHeader.startsWith("Bearer ")) {
-            return res.status(400).json({ message: "Token manquant" });
+            return res.status(400).json({ message: "Token manquant connecte toi dabord" });
         }
         const token = authHeader.split(" ")[1];
         try {
@@ -12,6 +12,7 @@ export class AuthMidlleware {
                 id: verifieToken.id,
                 login: verifieToken.login
             };
+            // JwtToken.verifieToken(token!) as JwtPayload;
             next();
         }
         catch (error) {
